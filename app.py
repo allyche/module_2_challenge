@@ -12,7 +12,7 @@ import questionary
 import csv
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv, save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -90,7 +90,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
     # Calculate loan to value ratio
     loan_to_value_ratio = calculate_loan_to_value_ratio(loan, home_value)
-    print(f"The loan to value ratio is {loan_to_value_ratio:.02f}.")
+    print(f"The loan to value ratio is {loan_to_value_ratio:.02f}")
 
     # Run qualification filters
     bank_data_filtered = filter_max_loan_size(loan, bank_data)
@@ -111,7 +111,17 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
-
+   
+    user_answer = questionary.confirm("Do you want to save the qualifying loans to csv?").ask()
+    if user_answer:
+        file_path = questionary.text("Please enter output csv file path (.csv):").ask()
+        csvpath = Path(file_path)
+        if not csvpath.exists():
+            sys.exit(f"Oops! Can't find this path: {csvpath}")
+        header = ["Lender", "Max Loan Amount" , "Max LTV" , "Max DTI" , "Min Credit Score", "Interest Rate"]
+        save_csv(csvpath, qualifying_loans, header)
+    else:
+        print("Do not save and print to screen")
 
 def run():
     """The main function for running the script."""
@@ -131,19 +141,6 @@ def run():
     save_qualifying_loans(qualifying_loans)
 
 
-#   def save_csv():
-""" Saving the list of qualifying loans to csv file per user provided directory.
-"""
-#     header = [Lender,Max Loan Amount,Max LTV,Max DTI,Min Credit Score,Interest Rate]
-#     csvpath = Path("XXXX.csv")
-#     with open(csvpath, "w") as csvfile:
-#         csvwriter = csv.writer(csvfile, delimiter=",")
-#         csvwriter.writerow(header)
-#     for XXXX in XXXX :
-#         csvwriter.writerow(loan.values())
-
-
-
-
 if __name__ == "__main__":
     fire.Fire(run)
+
