@@ -30,7 +30,8 @@ Before running the application first install the following dependencies.
 
 ## Examples
 
-<This section should include screenshots, code blocks, or animations showing how your project works.>
+To view the user interaction with the tool:
+https://github.com/allyche/module_2_challenge/blob/main/screen_shot.jpg
 
 ---
 
