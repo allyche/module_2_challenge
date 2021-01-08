@@ -1,4 +1,4 @@
-# Project Title
+# Loan Qualitfier Tool
 
 This is a python command-line interface application that allows users to input income and loan related data and see qualifying loans from lenders quickly and easily. The application works by that taking in a `daily_rate_sheet` of loan criteria from various loan providers, asks the user a number of questions to evaluate their loan eligibility, and then returns to them a list of qualifying loans to be saved to csv file.
 ---
