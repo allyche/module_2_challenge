@@ -35,7 +35,10 @@ def save_csv(csvpath, data, header=None):
     Args:
         csvpath (Path): The CSV file path.
         data (list of lists): A list of the rows of data for the CSV file.
-        header (list): An optional header for the CSV.
+        header (list): Header for the CSV.
+
+    Returns:
+        The csv file saved at the user specified directory and file name. 
 
     """
     with open(csvpath, "w", newline="") as csvfile:

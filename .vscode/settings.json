@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/Users/ally/opt/anaconda3/envs/dev/bin/python",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
+}
